@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wayne Industries - Sistema de Segurança</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <!-- <img
+        src="../app/assets/wayne-enterprises-logo-27B6BAEE5F-seeklogo.com-removebg-preview.png"
+        alt="Wayne Enterprises Logo"
+      /> -->
+      <h1>Wayne Industries</h1>
+      <p>Sistema de Segurança</p>
+    </header>
+
+    <!-- Tela de Login -->
+    <section class="login-section">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label for="username">Usuário</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Digite seu usuário"
+          required
+        />
+
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Digite sua senha"
+          required
+        />
+
+        <button type="submit">Entrar</button>
+      </form>
+      <div id="loginError" class="error-message"></div>
+    </section>
+
+    <!-- Dashboard (Visível após login) -->
+    <section class="dashboard" id="dashboard">
+      <h2>Dashboard</h2>
+      <p>Bem-vindo ao painel de controle!</p>
+      <div class="dashboard-cards">
+        <div class="card">
+          <a href="/admin-only">Acesso Administrativo</a>
+        </div>
+        <div class="card">
+          <a href="/manager-or-above">Painel Gerencial</a>
+        </div>
+        <div class="card">
+          <a href="/ceo-and-security-admin">Painel de Segurança</a>
+        </div>
+        <div class="card">
+          <a href="/ceo-only">Painel do CEO</a>
+        </div>
+        <div class="card">
+          <a href="/static/resources.html">Gerenciamento de Recursos</a>
+        </div>
+      </div>
+      <button id="logoutButton">Sair</button>
+    </section>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciamento de Recursos</title>
+    <link rel="stylesheet" href="css/resources.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Wayne Industries - Gerenciamento de Recursos</h1>
+      <p>Controle de equipamentos, veículos e dispositivos</p>
+    </header>
+
+    <main class="resources">
+      <section>
+        <h2>Equipamentos</h2>
+        <button
+          onclick="openRestrictedModal(['manager', 'security_admin', 'ceo'], 'equipments.html')"
+        >
+          Gerenciar Equipamentos
+        </button>
+      </section>
+
+      <section>
+        <h2>Veículos</h2>
+        <button
+          onclick="openRestrictedModal(['security_admin', 'ceo'], 'vehicles.html')"
+        >
+          Gerenciar Veículos
+        </button>
+      </section>
+
+      <section>
+        <h2>Dispositivos de Segurança</h2>
+        <button
+          onclick="openRestrictedModal(['security_admin', 'ceo'], 'devices.html')"
+        >
+          Gerenciar Dispositivos
+        </button>
+      </section>
+
+      <section>
+        <h2>Wayne Vault</h2>
+        <button onclick="openRestrictedModal(['ceo'], 'secret.html')">
+          Acessar Wayne Vault
+        </button>
+      </section>
+    </main>
+
+    <div id="restrictedModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Acesso Restrito</h2>
+        <p>Digite suas credenciais para acessar esta funcionalidade.</p>
+        <form id="restrictedLoginForm">
+          <label for="restrictedUsername">Usuário</label>
+          <input
+            type="text"
+            id="restrictedUsername"
+            placeholder="Digite seu usuário"
+            required
+          />
+
+          <label for="restrictedPassword">Senha</label>
+          <input
+            type="password"
+            id="restrictedPassword"
+            placeholder="Digite sua senha"
+            required
+          />
+
+          <button type="submit">Entrar</button>
+        </form>
+        <div id="restrictedError" class="error-message"></div>
+      </div>
+    </div>
+
+    <script src="js/resources.js"></script>
+  </body>
+</html>

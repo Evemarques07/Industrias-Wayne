@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciamento de Equipamentos</title>
+    <link rel="stylesheet" href="css/equipments.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Wayne Industries - Equipamentos de Segurança</h1>
+    </header>
+
+    <main>
+      <section id="equipmentList">
+        <h2>Equipamentos de Segurança</h2>
+        <ul id="equipments"></ul>
+      </section>
+
+      <section id="addEquipment">
+        <h2>Adicionar Equipamento</h2>
+        <form id="equipmentForm">
+          <input type="text" id="name" placeholder="Nome" required />
+          <textarea
+            id="description"
+            placeholder="Descrição"
+            required
+          ></textarea>
+          <input type="url" id="image_url" placeholder="URL da Imagem" />
+          <button type="submit">Adicionar</button>
+        </form>
+      </section>
+
+      <section id="editEquipment" style="display: none">
+        <h2>Editar Equipamento</h2>
+        <form id="editEquipmentForm">
+          <input type="hidden" id="edit_id" />
+          <input type="text" id="edit_name" placeholder="Nome" required />
+          <textarea
+            id="edit_description"
+            placeholder="Descrição"
+            required
+          ></textarea>
+          <input type="url" id="edit_image_url" placeholder="URL da Imagem" />
+          <button type="submit">Salvar Alterações</button>
+          <button type="button" onclick="cancelEdit()">Cancelar</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="js/equipments.js"></script>
+  </body>
+</html>

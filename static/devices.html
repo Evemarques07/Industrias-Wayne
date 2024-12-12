@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciamento de Dispositivos</title>
+    <link rel="stylesheet" href="css/devices.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Wayne Industries - Dispositivos de Segurança</h1>
+    </header>
+
+    <main>
+      <section id="deviceList">
+        <h2>Dispositivos</h2>
+        <ul id="devices"></ul>
+      </section>
+
+      <section id="addDevice">
+        <h2>Adicionar Dispositivo</h2>
+        <form id="deviceForm">
+          <input type="text" id="name" placeholder="Nome" required />
+          <textarea
+            id="description"
+            placeholder="Descrição"
+            required
+          ></textarea>
+          <input type="url" id="image_url" placeholder="URL da Imagem" />
+          <button type="submit">Adicionar</button>
+        </form>
+      </section>
+
+      <section id="editDevice" style="display: none">
+        <h2>Editar Dispositivo</h2>
+        <form id="editDeviceForm">
+          <input type="hidden" id="edit_id" />
+          <input type="text" id="edit_name" placeholder="Nome" required />
+          <textarea
+            id="edit_description"
+            placeholder="Descrição"
+            required
+          ></textarea>
+          <input type="url" id="edit_image_url" placeholder="URL da Imagem" />
+          <button type="submit">Salvar Alterações</button>
+          <button type="button" onclick="cancelEdit()">Cancelar</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="js/devices.js"></script>
+  </body>
+</html>
