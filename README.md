@@ -152,7 +152,7 @@ Certifique-se de que o banco foi criado com sucesso. O primeiro usuário (CEO, B
 │       ├── auth.py
 │       ├── password.py
 │       ├── __init__.py
-│   ├── crud.py
+│   ├── crud_Equipment.py
 │   ├── crud_device.py
 │   ├── crud_vehicle.py
 │   ├── database.py

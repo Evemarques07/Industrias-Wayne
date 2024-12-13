@@ -29,9 +29,10 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
         expire = datetime.utcnow() + expires_delta
     else:
         expire = datetime.utcnow() + timedelta(minutes=15)
-    to_encode.update({"exp": expire})
+    to_encode.update({"exp": expire, "role": data["role"]})  # Adicione o campo role
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
+
 
 # Função para verificar o papel (role)
 def check_role(user: User, allowed_roles: list):        
@@ -112,6 +113,7 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
     return {"access_token": access_token, "token_type": "bearer"}
 
 
+
 @router.get("/me")
 def get_current_user_info(current_user: User = Depends(get_current_user)):
     return {
@@ -124,22 +126,20 @@ def get_current_user_info(current_user: User = Depends(get_current_user)):
 # Rota protegida para usuários com role "admin"
 @router.get("/admin-only")
 def admin_route(current_user: User = Depends(get_current_user)):
-    check_role(current_user, ["admin","ceo"])
-    return {"message": "Bem-vindo ao painel administrativo!"}
-
-
+    check_role(current_user, ["admin", "ceo"])
+    return {"message": "Acesso autorizado para administradores e CEOs."}
 
 # Rota protegida para gerentes e acima
 @router.get("/manager-or-above")
 def manager_route(current_user: User = Depends(get_current_user)):
     check_role(current_user, ["manager", "admin", "ceo"])
-    return {"message": "Acesso permitido para gerentes e superiores!"}
+    return {"message": "Acesso autorizado para gerentes e superiores."}
 
 # Rota protegida para CEO e Security Admin
 @router.get("/ceo-and-security-admin")
 def ceo_and_security_admin_route(current_user: User = Depends(get_current_user)):
     check_role(current_user, ["ceo", "security_admin"])
-    return {"message": "Bem-vindo ao painel exclusivo para CEO e Administradores de Segurança!"}
+    return {"message": "Acesso autorizado para CEO e Administradores de Segurança."}
 
 # Rota protegida apenas para CEO
 @router.get("/ceo-only")

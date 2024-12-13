@@ -29,7 +29,6 @@ header p {
 }
 
 .login-section {
-  /* background-image: url("/app/assets/479774-3840x2160-desktop-4k-gotham-city-background.jpg"); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,15 +44,6 @@ header p {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-#loginForm {
-  width: 100%;
-  max-width: 400px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
-}
-
 #loginForm label {
   font-size: 1.2em;
   color: #f5f5f5;
@@ -61,8 +51,18 @@ header p {
   margin-bottom: 10px;
 }
 
+#loginForm {
+  width: 90%; /* Ajuste para ocupar menos espaço e garantir margem */
+  max-width: 400px; /* Limita o tamanho máximo */
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+  /* margin: auto;  */
+}
+
 #loginForm input {
-  width: 100%;
+  width: calc(100% - 20px); /* Deixa espaço suficiente com base no padding */
   padding: 10px;
   margin-bottom: 20px;
   border: none;
@@ -70,10 +70,11 @@ header p {
   background: #333;
   color: #f5f5f5;
   font-size: 1em;
+  box-sizing: border-box; /* Garante que padding seja incluído na largura */
 }
 
 #loginForm button {
-  width: 100%;
+  width: 100%; /* Garante que o botão ocupe toda a largura do container pai */
   padding: 10px;
   background: #f5d142;
   color: #333;
@@ -102,18 +103,27 @@ header p {
 
 .dashboard {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
-  padding: 40px 20px;
+  padding: 20px;
 }
 
 .dashboard h2 {
   text-align: center;
   color: #f5d142;
   margin-bottom: 20px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  min-width: 15%;
+  margin: 1rem;
 }
 
 .dashboard p {
@@ -124,42 +134,54 @@ header p {
 
 .dashboard-cards {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.dashboard .card:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.7);
-}
-
-dashboard .card {
-  /* Opção 1: Largura Fixa */
-  /* width: 200px; /* Ajuste conforme necessário */
-
-  /* Opção 2: flex-basis e flex-grow */
-  flex-basis: 200px; /* Largura inicial */
-  flex-grow: 1; /*permite o crescimento */
-
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  align-items: center; /* Centraliza os itens verticalmente */
+  flex-wrap: wrap; /* Permite quebra de linha */
+  gap: 1rem; /* Espaçamento entre os cards */
+  padding: 1rem;
+  width: 100%; /* Garante que ocupe toda a largura do container */
+  min-height: 50vh; /* Define uma altura mínima para centralizar */
+  margin: auto; /* Centraliza no eixo vertical quando combinado com flex */
+  background: #333;
+  color: #f5f5f5;
   border-radius: 10px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.dashboard .card a {
+.card {
+  display: flex;
+  flex-direction: column; /* Alinha os itens verticalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  background: #444; /* Mantém o fundo do card */
+  border-radius: 10px;
+  padding: 1rem;
+  width: 200px; /* Tamanho fixo para uniformidade */
+  height: 100px; /* Tamanho fixo para uniformidade */
+  text-align: center; /* Alinha o texto */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 10px 20px rgba(219, 205, 12, 0.7);
+}
+
+.card a {
   text-decoration: none;
   color: #f5d142;
   font-size: 1.2em;
+  font-weight: bold;
   display: block;
-  margin-top: 10px;
-  transition: color 0.3s;
+  text-align: center; /* Alinha o texto no centro */
+  width: 100%; /* Garante que o link ocupe todo o espaço disponível */
+  line-height: 1.5; /* Ajusta o espaçamento entre linhas */
 }
 
-.dashboard .card a:hover {
+.card a:hover {
   color: #f7e678;
 }
 

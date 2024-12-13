@@ -14,7 +14,9 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
-        if username is None:
+        role: str = payload.get("role")
+        print(f"Token Payload: {payload}")  # Inspecionar o payload
+        if username is None or role is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Credenciais inválidas",
@@ -28,9 +30,18 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
                 headers={"WWW-Authenticate": "Bearer"},
             )
         return user
-    except JWTError:
+    except JWTError as e:
+        print(f"JWT Error: {e}")  # Log para erros relacionados ao token
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Token inválido",
             headers={"WWW-Authenticate": "Bearer"},
+        )
+
+# Função para verificar o papel (role)
+def check_role(user: User, allowed_roles: list):
+    if user.role not in allowed_roles:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Acesso negado. Permissões insuficientes.",
         )

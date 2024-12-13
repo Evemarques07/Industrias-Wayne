@@ -73,51 +73,58 @@ header p {
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
   z-index: 1000;
+  overflow: hidden; /* Evita rolagem */
 }
 
 .modal-content {
   background: #222;
   border-radius: 10px;
-  padding: 20px;
+  padding: 30px 20px; /* Mais espaço interno */
   max-width: 400px;
-  width: 90%;
+  width: 90%; /* Adapta em telas pequenas */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
   text-align: left;
   color: #f5f5f5;
+  position: relative; /* Para posicionar o botão de fechar */
 }
 
 .modal-content h2 {
   color: #f5d142;
-  margin-top: 0;
+  margin: 0 0 20px; /* Espaço abaixo do título */
+  font-size: 1.8em;
+  text-align: center; /* Centraliza o título */
 }
 
 .modal-content label {
   display: block;
   margin: 10px 0 5px;
+  font-size: 1em;
 }
 
 .modal-content input {
-  width: 100%;
+  width: calc(90% - 20px); /* Ajusta largura com padding */
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border: 1px solid #555;
   border-radius: 5px;
   background: #333;
   color: #f5f5f5;
+  box-sizing: border-box;
 }
 
 .modal-content button {
   background: #f5d142;
   border: none;
   padding: 10px 20px;
-  font-size: 1em;
+  font-size: 1.1em;
   color: #333;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
+  width: 100%; /* Botão ocupa largura total */
 }
 
 .modal-content button:hover {
@@ -125,7 +132,7 @@ header p {
 }
 
 .modal-content .close {
-  position: absolute;
+  /* position: absolute; */
   top: 10px;
   right: 10px;
   font-size: 1.5em;
@@ -137,4 +144,5 @@ header p {
   color: #ff4d4d;
   font-size: 0.9em;
   margin-top: 10px;
+  text-align: center;
 }

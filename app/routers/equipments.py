@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.schemas import EquipmentCreate, EquipmentUpdate, EquipmentResponse
-from app.crud import get_equipments, get_equipment, create_equipment, update_equipment, delete_equipment
+from app.crud_Equipment import get_equipments, get_equipment, create_equipment, update_equipment, delete_equipment
 from app.database import get_db
 
 router = APIRouter(
