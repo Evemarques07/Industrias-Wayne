@@ -138,16 +138,30 @@ Certifique-se de que o banco foi criado com sucesso. O primeiro usuário (CEO, B
 
 ```
 .
+.
 ├── app
+│   ├── assets
+│   │   ├── 479774-3840x2160-desktop-4k-gotham-city-background.jpg
+│   │   ├── wayne-enterprises-logo-27B6BAEE5F-seeklogo.com-removebg-preview.png
+│   ├── routers
+│   │   ├── devices.py
+│   │   ├── equipments.py
+│   │   ├── users.py
+│   │   ├── vehicles.py
+│   └── utils
+│       ├── auth.py
+│       ├── password.py
+│       ├── __init__.py
+│   ├── crud.py
+│   ├── crud_device.py
+│   ├── crud_vehicle.py
+│   ├── database.py
+│   ├── initial_data.py
+│   ├── main.py
 │   ├── models.py
 │   ├── schemas.py
-│   ├── database.py
-│   ├── routers
-│   │   ├── users.py
-│   │   ├── equipments.py
-│   │   ├── vehicles.py
-│   │   └── devices.py
-│   └── utils
+│   ├── utils.py
+│   ├── __init__.py
 ├── static
 │   ├── css
 │   │   ├── ArchiveSecret.css
@@ -156,17 +170,26 @@ Certifique-se de que o banco foi criado com sucesso. O primeiro usuário (CEO, B
 │   │   ├── resources.css
 │   │   ├── styles.css
 │   │   ├── vehicles.css
-│   └── js
-│       ├── app.js
-│       ├── resources.js
-│       ├── equipments.js
-│       ├── vehicles.js
-│       └── devices.js
-├── templates
+│   ├── js
+│   │   ├── app.js
+│   │   ├── devices.js
+│   │   ├── equipments.js
+│   │   ├── resources.js
+│   │   ├── vehicles.js
+│   ├── templates
+│       ├── ArchiveScretVillans.html
+│       ├── ArchiveSecretMetahumans.html
+│       ├── devices.html
+│       ├── equipments.html
+│       ├── index.html
+│       ├── resources.html
+│       ├── secret.html
+│       ├── vehicles.html
 ├── venv
 ├── .gitignore
+├── README.md
 ├── requirements.txt
-└── README.md
+
 ```
 
 ## Testes
