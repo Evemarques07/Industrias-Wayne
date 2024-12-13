@@ -1,12 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
 from app.database import Base, engine
 from app.initial_data import initialize_database
-from app.routers import users
-from app.routers import equipments
-from app.routers import vehicles
-from app.routers import devices
+from app.routers import users, equipments, vehicles, devices
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.templating import Jinja2Templates
 
 # Criar as tabelas no banco
 Base.metadata.create_all(bind=engine)
@@ -16,6 +15,9 @@ initialize_database()
 
 # Instância do FastAPI
 app = FastAPI()
+
+# Configurar templates
+templates = Jinja2Templates(directory="static/templates")
 
 # Rotas
 app.include_router(users.router)
@@ -32,4 +34,12 @@ app.add_middleware(
     allow_headers=["*"],  # Permitir todos os cabeçalhos
 )
 
+# Montar arquivos estáticos
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+
+# Rota para o index.html
+@app.get("/", response_class=HTMLResponse)
+async def read_index(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
