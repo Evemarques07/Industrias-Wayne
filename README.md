@@ -1,14 +1,21 @@
-# Wayne Industries - Sistema de Segurança
+Segue a documentação atualizada com as informações solicitadas, incluindo a inserção automática de veículos, equipamentos e dispositivos para melhorar o uso do projeto:
+
+---
+
+# **Wayne Industries - Sistema de Segurança**
 
 Este é um sistema completo de gerenciamento de segurança, desenvolvido como projeto final. A aplicação é composta por um backend em **FastAPI**, um banco de dados **MySQL** e um frontend em **HTML/CSS**.
 
-## Funcionalidades
+## **Funcionalidades**
 
 - Gerenciamento de Usuários (com autenticação e autorização).
 - Gerenciamento de Equipamentos, Veículos e Dispositivos de Segurança.
 - Diferentes níveis de acesso: Funcionário, Gerente, Administrador de Segurança e CEO.
+- **Dados automáticos**: Equipamentos, veículos e dispositivos de segurança já cadastrados para simulação e uso imediato.
 
-## Pré-requisitos
+---
+
+## **Pré-requisitos**
 
 Antes de começar, certifique-se de ter os seguintes programas instalados:
 
@@ -16,22 +23,24 @@ Antes de começar, certifique-se de ter os seguintes programas instalados:
 - **MySQL**
 - **Git**
 
-## Configuração do Ambiente
+---
 
-### 1. Clone o repositório
+## **Configuração do Ambiente**
+
+### **1. Clone o repositório**
 
 ```bash
 git clone https://github.com/seu-usuario/seu-repositorio.git
 cd seu-repositorio
 ```
 
-### 2. Crie um ambiente virtual
+### **2. Crie um ambiente virtual**
 
 ```bash
 python -m venv venv
 ```
 
-### 3. Ative o ambiente virtual
+### **3. Ative o ambiente virtual**
 
 - No **Linux/Mac**:
   ```bash
@@ -42,29 +51,19 @@ python -m venv venv
   venv\Scripts\activate
   ```
 
-### 4. Instale as dependências
+### **4. Instale as dependências**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Configure o banco de dados
+---
+
+## **Configuração do Banco de Dados**
 
 Certifique-se de que o **MySQL** esteja rodando e que você criou o banco de dados necessário. O arquivo de configuração do banco pode ser ajustado no `DATABASE_URL` dentro de `app/database.py`.
 
-## Configuração do Banco de Dados
-
-Certifique-se de que o MySQL esteja instalado e rodando. Este projeto usa as seguintes credenciais padrão para se conectar ao banco de dados:
-
-**Configuração do Banco de Dados:**
-
-- **Usuário:** infinity
-- **Senha:** My123456
-- **Host:** localhost
-- **Porta:** 3306
-- **Banco de Dados:** industrias_wayne
-
-### 1. Criação do Banco de Dados
+### **1. Criação do Banco de Dados**
 
 Abra o MySQL e crie o banco de dados com o seguinte comando:
 
@@ -72,7 +71,7 @@ Abra o MySQL e crie o banco de dados com o seguinte comando:
 CREATE DATABASE industrias_wayne;
 ```
 
-### 2. Configurar o Usuário e Permissões
+### **2. Configurar o Usuário e Permissões**
 
 Crie o usuário `infinity` (se ainda não existir) e garanta que ele tenha acesso ao banco de dados `industrias_wayne`:
 
@@ -89,7 +88,7 @@ GRANT ALL PRIVILEGES ON industrias_wayne.* TO 'infinity'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-### 3. Verificar a Conexão
+### **3. Verificar a Conexão**
 
 Certifique-se de que o MySQL está rodando e que você pode acessar o banco com o seguinte comando:
 
@@ -99,7 +98,7 @@ mysql -u infinity -p
 
 Digite a senha `My123456` para verificar a conexão.
 
-### 4. Configuração no Projeto
+### **4. Configuração no Projeto**
 
 O arquivo `app/database.py` já está configurado para usar essa URL:
 
@@ -109,94 +108,89 @@ DATABASE_URL = "mysql+mysqlconnector://infinity:My123456@localhost:3306/industri
 
 Se necessário, ajuste esse valor para o seu ambiente local.
 
-### 5. Inicializar o Banco de Dados
+---
 
-Depois de configurar o MySQL e o banco de dados, execute os seguintes comandos para criar as tabelas necessárias no banco:
+## **Inicialização do Projeto**
+
+Depois de configurar o MySQL e o banco de dados, execute os seguintes comandos para criar as tabelas e iniciar o projeto:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-Ou use um script de inicialização no Python para criar as tabelas:
+Durante a inicialização, o projeto automaticamente insere:
 
-```python
-from app.database import Base, engine
-from app.models import User, Equipment, Vehicle, Device
+- **Equipamentos**: Incluindo gadgets como Bat-Sinal, Bat-Garrafa e outros dispositivos tecnológicos.
+- **Veículos**: Como Batmóvel, Bat-Jato, entre outros.
+- **Dispositivos**: Ferramentas tecnológicas avançadas da Wayne Industries.
 
-Base.metadata.create_all(bind=engine)
-```
+Esses dados são inseridos automaticamente para que você possa testar e utilizar o sistema de forma imediata.
 
-### 6. Testar o Banco
+---
 
-Certifique-se de que o banco foi criado com sucesso. O primeiro usuário (CEO, Bruce Wayne) será inserido automaticamente no banco com as credenciais:
+## **Estrutura do Projeto**
 
-- **Usuário:** Bruce Wayne
-- **Senha:** robin
-- **Papel (Role):** ceo
-
-## Estrutura do Projeto
-
-```
-.
-.
-├── app
-│   ├── assets
-│   │   ├── 479774-3840x2160-desktop-4k-gotham-city-background.jpg
-│   │   ├── wayne-enterprises-logo-27B6BAEE5F-seeklogo.com-removebg-preview.png
-│   ├── routers
-│   │   ├── devices.py
-│   │   ├── equipments.py
-│   │   ├── users.py
-│   │   ├── vehicles.py
-│   └── utils
-│       ├── auth.py
-│       ├── password.py
-│       ├── __init__.py
-│   ├── crud_Equipment.py
-│   ├── crud_device.py
-│   ├── crud_vehicle.py
-│   ├── database.py
-│   ├── initial_data.py
+```plaintext
+D:\Adm Joias\Documents\Everton\Projeto_Final_IN\
+├── app\
+│   ├── __init__.py
 │   ├── main.py
+│   ├── database.py
 │   ├── models.py
 │   ├── schemas.py
-│   ├── utils.py
-│   ├── __init__.py
-├── static
-│   ├── css
-│   │   ├── ArchiveSecret.css
-│   │   ├── devices.css
-│   │   ├── equipments.css
-│   │   ├── resources.css
+│   ├── utils\
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── password.py
+│   ├── routers\
+│   │   ├── __init__.py
+│   │   ├── users.py
+│   │   ├── equipments.py
+│   │   ├── vehicles.py
+│   │   ├── devices.py
+│   ├── templates\
+│   │   ├── base.html
+│   │   ├── index.html
+│   │   ├── login.html
+│   │   ├── dashboard.html
+│   │   ├── equipments.html
+│   │   ├── vehicles.html
+│   │   ├── devices.html
+│   └── __pycache__\  # Gerado automaticamente pelo Python
+├── static\
+│   ├── css\
 │   │   ├── styles.css
-│   │   ├── vehicles.css
-│   ├── js
-│   │   ├── app.js
-│   │   ├── devices.js
-│   │   ├── equipments.js
-│   │   ├── resources.js
-│   │   ├── vehicles.js
-│   ├── templates
-│       ├── ArchiveScretVillans.html
-│       ├── ArchiveSecretMetahumans.html
-│       ├── devices.html
-│       ├── equipments.html
-│       ├── index.html
-│       ├── resources.html
-│       ├── secret.html
-│       ├── vehicles.html
-├── venv
-├── .gitignore
-├── README.md
-├── requirements.txt
-
+│   ├── js\
+│   │   ├── scripts.js
+├── venv\  # Ambiente virtual (não listado em requisições de estrutura)
+├── requirements.txt  # Dependências do projeto
 ```
 
-## Testes
+---
 
-Use o **Postman** ou outro cliente HTTP para testar as APIs.
+## **Configuração de Segurança**
 
-## Contribuições
+Este projeto utiliza autenticação com JWT (JSON Web Tokens). A chave secreta (`SECRET_KEY`) é usada para assinar os tokens e garantir a segurança. Por padrão, o projeto inclui uma chave padrão:
+
+```python
+SECRET_KEY = "default-secret-key"
+```
+
+**🚨 Recomendação:**
+Substitua a chave padrão por uma chave forte e configure-a como variável de ambiente em produção.
+
+---
+
+## **Testes**
+
+Use o **Postman**, **cURL**, ou outro cliente HTTP para testar as APIs:
+
+1. Faça login com as credenciais padrão para obter o token JWT.
+2. Use o token para acessar rotas protegidas, como `/dashboard` ou `/resources/equipments`.
+
+---
+
+## **Contribuições**
 
 Se você quiser contribuir com este projeto, siga os passos abaixo:
 
@@ -205,3 +199,7 @@ Se você quiser contribuir com este projeto, siga os passos abaixo:
 3. Faça o commit: `git commit -m 'Minhas alterações'`.
 4. Envie suas alterações: `git push origin minha-branch`.
 5. Abra um Pull Request.
+
+---
+
+Com essas atualizações, a documentação reflete melhor o estado atual do projeto e as funcionalidades automáticas. Se precisar ajustar algo mais, é só avisar! 🚀

@@ -50,6 +50,11 @@ header p {
   color: #f5d142;
 }
 
+a {
+  margin-top: 0;
+  color: #f5d142;
+}
+
 .resources button {
   background: #f5d142;
   border: none;

@@ -8,6 +8,7 @@ from app.database import get_db
 from app.models import User
 from app.schemas import UserCreate, UserResponse
 from app.utils.auth import get_current_user
+from app.utils.auth import generate_access_token
 from app.utils.password import hash_password, verify_password
 
 
@@ -107,10 +108,9 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Credenciais inválidas",
-            headers={"WWW-Authenticate": "Bearer"},
         )
-    access_token = create_access_token(data={"sub": user.username, "role": user.role})
-    return {"access_token": access_token, "token_type": "bearer"}
+    token = create_access_token({"sub": user.username, "role": user.role})
+    return {"access_token": token, "token_type": "bearer"}
 
 
 

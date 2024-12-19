@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -50,4 +50,27 @@
 
     <script src="/static/js/devices.js"></script>
   </body>
-</html>
+</html> -->
+{% extends "base.html" %} {% block title %}Dispositivos{% endblock %} {% block
+content %}
+<h2>Gerenciamento de Dispositivos</h2>
+<div id="device-list">
+  <!-- Os dispositivos serão carregados via JavaScript -->
+</div>
+<script>
+  fetch("/devices", {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const list = document.getElementById("device-list");
+      data.forEach((item) => {
+        const div = document.createElement("div");
+        div.innerHTML = `<strong>${item.name}</strong>: ${item.description}`;
+        list.appendChild(div);
+      });
+    });
+</script>
+{% endblock %}

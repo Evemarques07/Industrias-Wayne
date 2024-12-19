@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -38,7 +38,6 @@
       <div id="loginError" class="error-message"></div>
     </section>
 
-    <!-- Dashboard (Visível após login) -->
     <section class="dashboard" id="dashboard">
       <h2>Dashboard</h2>
       <p>Bem-vindo ao painel de controle!</p>
@@ -53,9 +52,7 @@
           <a href="/ceo-and-security-admin">Painel de Segurança</a>
         </div>
         <div class="card">
-          <a href="/static/templates/resources.html"
-            >Gerenciamento de Recursos</a
-          >
+          <a href="/resources">Gerenciamento de Recursos</a>
         </div>
       </div>
       <button id="logoutButton">Sair</button>
@@ -63,4 +60,36 @@
 
     <script src="/static/js/app.js"></script>
   </body>
-</html>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Indústrias Wayne</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h1>Bem-vindo às Indústrias Wayne</h1>
+      <form id="login-form">
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Entrar</button>
+      </form>
+      <p id="error-message" class="error"></p>
+    </div>
+    <script src="/static/js/login.js"></script>
+  </body>
+</html> -->
+
+{% extends "base.html" %} {% block title %}Página Inicial{% endblock %} {% block
+content %}
+<h2>Bem-vindo ao Sistema de Gestão da Indústrias Wayne</h2>
+<p>Use o menu acima para navegar pelo sistema.</p>
+{% endblock %}

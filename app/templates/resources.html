@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -65,15 +65,15 @@
 
     <script src="../js/resources.js"></script>
   </body>
-</html>
+</html> -->
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gerenciamento de Recursos</title>
-    <link rel="stylesheet" href="../css/resources.css" />
+    <link rel="stylesheet" href="/static/css/resources.css" />
   </head>
   <body>
     <header>
@@ -83,37 +83,22 @@
 
     <main class="resources">
       <section>
-        <h2>Equipamentos</h2>
-        <button
-          onclick="openRestrictedModal(['manager', 'security_admin', 'ceo'], 'equipments.html')"
-        >
-          Gerenciar Equipamentos
-        </button>
+        <h2><a href="/resources/equipments">Gerenciar Equipamentos</a></h2>
       </section>
 
       <section>
         <h2>Veículos</h2>
-        <button
-          onclick="openRestrictedModal(['security_admin', 'ceo'], 'vehicles.html')"
-        >
-          Gerenciar Veículos
-        </button>
+        <a href="/resources/vehicles">Gerenciar Veículos</a>
       </section>
 
       <section>
         <h2>Dispositivos de Segurança</h2>
-        <button
-          onclick="openRestrictedModal(['security_admin', 'ceo'], 'devices.html')"
-        >
-          Gerenciar Dispositivos
-        </button>
+        <a href="/resources/devices">Gerenciar Dispositivos</a>
       </section>
 
       <section>
         <h2>Wayne Vault</h2>
-        <button onclick="openRestrictedModal(['ceo'], 'secret.html')">
-          Acessar Wayne Vault
-        </button>
+        <a href="/resources/wayne-vault">Acessar Wayne Vault</a>
       </section>
     </main>
 
@@ -145,6 +130,6 @@
       </div>
     </div>
 
-    <script src="../js/resources.js"></script>
+    <script src="/static/js/resources.js"></script>
   </body>
-</html> -->
+</html>

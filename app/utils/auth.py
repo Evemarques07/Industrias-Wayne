@@ -4,10 +4,12 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from app.models import User
 from app.database import get_db
+from datetime import datetime, timedelta
+
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/users/login")
 
-SECRET_KEY = "sua-chave-secreta"  # Substitua por uma chave segura
+SECRET_KEY = "sua-chave-secreta"  # Substitua por uma chave segura, Altere em produção!
 ALGORITHM = "HS256"
 
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
@@ -45,3 +47,12 @@ def check_role(user: User, allowed_roles: list):
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Acesso negado. Permissões insuficientes.",
         )
+
+def generate_access_token(data: dict, expires_delta: timedelta = None):
+    """
+    Gera um token de acesso JWT com os dados fornecidos.
+    """
+    to_encode = data.copy()
+    expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
