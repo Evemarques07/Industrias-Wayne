@@ -34,7 +34,7 @@
     if (response.ok) {
       localStorage.setItem("token", result.access_token); // Salva o token no localStorage
       loginResponse.innerHTML = `<p style="color: green;">Login realizado com sucesso!</p>`;
-      window.location.href = "/dashboard"; // Redireciona para o dashboard
+      window.location.href = "/dashboard-data"; // Redireciona para o dashboard
     } else {
       loginResponse.innerHTML = `<p style="color: red;">Erro: ${result.detail}</p>`;
     }

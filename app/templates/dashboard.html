@@ -102,7 +102,7 @@ content %}
       if (response.status === 401) {
         alert("Token inválido ou expirado. Redirecionando para o login.");
         localStorage.removeItem("token"); // Remove o token inválido
-        window.location.href = "/login";
+        window.location.href = "/me";
       }
       return response.json();
     })

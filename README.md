@@ -1,10 +1,12 @@
-Segue a documentação atualizada com as informações solicitadas, incluindo a inserção automática de veículos, equipamentos e dispositivos para melhorar o uso do projeto:
+Segue a documentação atualizada com a informação de que o CEO é automaticamente inserido no banco de dados com as credenciais padrão para iniciar a configuração do sistema:
 
 ---
 
 # **Wayne Industries - Sistema de Segurança**
 
 Este é um sistema completo de gerenciamento de segurança, desenvolvido como projeto final. A aplicação é composta por um backend em **FastAPI**, um banco de dados **MySQL** e um frontend em **HTML/CSS**.
+
+---
 
 ## **Funcionalidades**
 
@@ -118,7 +120,17 @@ Depois de configurar o MySQL e o banco de dados, execute os seguintes comandos p
 uvicorn app.main:app --reload
 ```
 
-Durante a inicialização, o projeto automaticamente insere:
+### **Dados Automáticos Inseridos**
+
+Durante a inicialização do projeto, os seguintes dados são inseridos automaticamente:
+
+- **CEO (Bruce Wayne):**
+
+  - **Usuário:** `Bruce Wayne`
+  - **Senha:** `robin`
+  - **Papel (Role):** `ceo`
+
+  > ⚠️ **Importante**: O CEO é o único usuário inicial e possui permissões para cadastrar outros usuários no sistema. Use as credenciais acima para acessar o sistema e configurar os demais usuários.
 
 - **Equipamentos**: Incluindo gadgets como Bat-Sinal, Bat-Garrafa e outros dispositivos tecnológicos.
 - **Veículos**: Como Batmóvel, Bat-Jato, entre outros.
@@ -185,7 +197,7 @@ Substitua a chave padrão por uma chave forte e configure-a como variável de am
 
 Use o **Postman**, **cURL**, ou outro cliente HTTP para testar as APIs:
 
-1. Faça login com as credenciais padrão para obter o token JWT.
+1. Faça login com as credenciais padrão do CEO para obter o token JWT.
 2. Use o token para acessar rotas protegidas, como `/dashboard` ou `/resources/equipments`.
 
 ---
@@ -201,5 +213,3 @@ Se você quiser contribuir com este projeto, siga os passos abaixo:
 5. Abra um Pull Request.
 
 ---
-
-Com essas atualizações, a documentação reflete melhor o estado atual do projeto e as funcionalidades automáticas. Se precisar ajustar algo mais, é só avisar! 🚀
