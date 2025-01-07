@@ -79,12 +79,12 @@ def get_dashboard_data(current_user=Depends(get_current_user)):
 
 @app.get("/admin-only")
 async def admin_page(current_user: User = Depends(get_current_user)):
-    check_role(current_user, ["admin","security_admin", "ceo"])
+    check_role(current_user, ["manager","security_admin", "ceo"])
     return {"message": "Página restrita para administradores ou CEO"}
 
 @app.get("/manager-or-above")
 async def manager_page(current_user: User = Depends(get_current_user)):
-    check_role(current_user, ["manager", "admin", "ceo"])
+    check_role(current_user, ["manager", "ceo"])
     return {"message": "Página restrita para gerentes ou superiores"}
 
 @app.get("/ceo-and-security-admin")
@@ -94,7 +94,7 @@ async def ceo_security_page(current_user: User = Depends(get_current_user)):
 
 @app.get("/resources")
 async def resources_page(current_user: User = Depends(get_current_user)):
-    check_role(current_user, ["ceo", "security_admin"])
+    check_role(current_user, ["ceo", "security_admin", "manager"])
     return {"message": "Gerenciamento de recursos"}
 
 @app.get("/resources/equipments")
