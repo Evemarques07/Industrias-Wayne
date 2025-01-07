@@ -168,9 +168,22 @@ Esses dados são inseridos automaticamente para que você possa testar e utiliza
 
 ### **Gerenciamento de Recursos**
 
-A partir da página **home.html**, você pode navegar até **resources.html**, onde será possível gerenciar os equipamentos, veículos e dispositivos da Wayne Industries. Para acessar **resources.html**, é necessário que o usuário tenha as credenciais apropriadas, sendo validado por sua função (role).
+Login/Recursos
 
-⚠️ **Cofre Wayne**  
+A partir da página home.html, você pode navegar até resources.html, onde será possível gerenciar os equipamentos, veículos e dispositivos da Wayne Industries. Para acessar resources.html, é necessário que o usuário tenha as credenciais apropriadas, sendo validado por sua função (role).
+
+### **Novos usuários**
+
+Login/Administração
+
+É possível realizar o cadastro de novos usuários, respeitando a hierarquia de permissões do sistema:
+
+CEO: Pode cadastrar novos usuários com as funções de security_admin, manager ou employee.
+Security Admin: Pode cadastrar usuários com as funções de manager ou employee.
+Manager: Pode cadastrar usuários apenas com a função de employee.
+⚠️ Importante: Cada nível de usuário tem permissões específicas, garantindo que as ações realizadas sejam controladas e auditadas conforme as políticas de segurança da Wayne Industries.
+
+⚠️ **Cofre Wayne**
 Dentro de **resources.html**, há uma área exclusiva chamada **Cofre Wayne**, que contém informações sensíveis e só pode ser acessada pelo **CEO**, Bruce Wayne. Portanto, para acessar o **Cofre Wayne**, o usuário deve possuir as permissões necessárias para a função de CEO, o que será validado através de suas credenciais no sistema.
 
 ---
