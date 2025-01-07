@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dispositivos</title>
+    <link rel="stylesheet" href="../css/devices.css" />
+  </head>
+  <body>
+    <div class="devices-container">
+      <h1>Dispositivos</h1>
+
+      <form class="add-device-form">
+        <h2>Adicionar Dispositivo</h2>
+        <input type="text" name="name" placeholder="Nome" required />
+        <textarea
+          name="description"
+          placeholder="Descrição"
+          required
+        ></textarea>
+        <input
+          type="text"
+          name="image_url"
+          placeholder="URL da Imagem"
+          required
+        />
+        <button type="submit">Adicionar</button>
+      </form>
+
+      <div id="devices-list">
+        <!-- Os dispositivos serão listados aqui -->
+      </div>
+      <button id="back-button">Voltar</button>
+    </div>
+    <script src="../js/devices.js"></script>
+  </body>
+</html>

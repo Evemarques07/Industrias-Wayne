@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veículos</title>
+    <link rel="stylesheet" href="../css/vehicles.css" />
+  </head>
+  <body>
+    <div class="vehicles-container">
+      <h1>Veículos</h1>
+
+      <form class="add-vehicle-form">
+        <h2>Adicionar Veículo</h2>
+        <input type="text" name="name" placeholder="Nome" required />
+        <textarea
+          name="description"
+          placeholder="Descrição"
+          required
+        ></textarea>
+        <input
+          type="text"
+          name="image_url"
+          placeholder="URL da Imagem"
+          required
+        />
+        <button type="submit">Adicionar</button>
+      </form>
+
+      <div id="vehicles-list">
+        <!-- Os veículos serão listados aqui -->
+      </div>
+      <button id="back-button">Voltar</button>
+    </div>
+    <script src="../js/vehicles.js"></script>
+  </body>
+</html>

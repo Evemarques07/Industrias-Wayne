@@ -1,0 +1,128 @@
+/* Body e container principal */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1c1c1c, #3e3e3e);
+  color: #f5f5f5;
+}
+
+.register-container {
+  background-color: #2b2b2b;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+/* Títulos */
+.register-container h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #f5d142;
+  font-weight: bold;
+}
+
+.register-container h2 {
+  font-size: 1.5rem;
+  color: #f5f5f5;
+  margin-bottom: 20px;
+}
+
+/* Informações do usuário logado */
+#current-user-info {
+  background-color: #3e3e3e;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+#current-user-info p {
+  color: #ccc;
+}
+
+#current-user-info span {
+  color: #f5d142;
+}
+
+/* Formulário */
+#register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  background-color: #1f1f1f;
+}
+
+#register-form h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #f5d142;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input-group label {
+  font-size: 1rem;
+  color: #f5f5f5;
+  margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #2b2b2b;
+  color: #f5f5f5;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #f5d142;
+}
+
+button {
+  background-color: #f5d142;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+  background-color: #dbc038;
+  transform: scale(1.05);
+}
+
+/* Mensagens de erro */
+#error-message {
+  color: #e74c3c;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Botão "Voltar" */
+#back-button {
+  margin-top: 20px;
+  background-color: #555;
+  color: #f5f5f5;
+}
+
+#back-button:hover {
+  background-color: #777;
+}

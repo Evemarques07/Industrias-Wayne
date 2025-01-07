@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+  <body>
+    <div class="register-container">
+      <h1>Registro de Usuário</h1>
+      <div id="current-user-info">
+        <h2>Usuário Logado</h2>
+        <!-- Informações do usuário atual serão exibidas aqui -->
+        <p>ID: <span id="current-user-id"></span></p>
+        <p>Usuário: <span id="current-user-username"></span></p>
+        <p>Cargo: <span id="current-user-role"></span></p>
+      </div>
+      <form id="register-form">
+        <h2>Cadastrar Novo Usuário</h2>
+        <div class="input-group">
+          <label for="username">Usuário</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="input-group">
+          <label for="password">Senha</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="input-group">
+          <label for="role">Cargo</label>
+          <select id="role" name="role" required>
+            <option value="ceo">CEO</option>
+            <option value="security_admin">Security Admin</option>
+            <option value="manager">Manager</option>
+            <option value="employee">Employee</option>
+          </select>
+        </div>
+        <button type="submit">Registrar</button>
+        <div id="error-message" class="error"></div>
+      </form>
+      <button id="back-button">Voltar</button>
+    </div>
+    <script src="../js/register.js"></script>
+  </body>
+</html>

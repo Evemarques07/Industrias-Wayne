@@ -6,7 +6,7 @@ from app.database import SessionLocal
 def initialize_database():
     db: Session = SessionLocal()
     try:
-        # Verificar se o CEO já está cadastrado
+        # Criar CEO se não existir
         existing_ceo = db.query(User).filter(User.role == "ceo").first()
         if not existing_ceo:
             hashed_password = hash_password("robin")
@@ -20,6 +20,42 @@ def initialize_database():
             print("Usuário CEO 'Bruce Wayne' criado com sucesso!")
         else:
             print("Usuário CEO já existente.")
+
+        # Criar outros usuários
+        user_data = [
+            {
+                "username": "Alfred Pennyworth",
+                "password": "alfred123",
+                "role": "security_admin",
+            },
+            {
+                "username": "Lucius Fox",
+                "password": "lucius123",
+                "role": "manager",
+            },
+            {
+                "username": "Clark Kent",
+                "password": "superman123",
+                "role": "employee",
+            },
+            {
+                "username": "Diana Prince",
+                "password": "wonderwoman123",
+                "role": "employee",
+            },
+        ]
+        for user in user_data:
+            existing_user = db.query(User).filter(User.username == user["username"]).first()
+            if not existing_user:
+                hashed_password = hash_password(user["password"])
+                new_user = User(
+                    username=user["username"],
+                    hashed_password=hashed_password,
+                    role=user["role"],
+                )
+                db.add(new_user)
+        db.commit()
+        print("Usuários adicionais criados com sucesso!")
 
         # Inserir Equipamentos
         equipment_data = [
