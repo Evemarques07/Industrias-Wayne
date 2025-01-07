@@ -116,6 +116,33 @@ Depois de configurar o MySQL e o banco de dados, execute os seguintes comandos p
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
+## **Inicialização do Frontend**
+
+Para acessar a interface do sistema, você deve abrir o arquivo index.html no navegador. É importante que ele seja servido por um servidor local, como o Live Server no VSCode, para que as interações funcionem corretamente.
+
+1. Instalar o Live Server no VSCode
+   Certifique-se de que o Live Server está instalado como extensão no VSCode.
+   Para instalar, acesse a aba de extensões (Ctrl+Shift+X), procure por "Live Server" e clique em Instalar.
+2. Iniciar o Live Server
+   Navegue até o diretório pages/templates/ no VSCode.
+   Clique com o botão direito no arquivo index.html e selecione Open with Live Server.
+   Isso abrirá o arquivo no navegador com o endereço local, por exemplo:
+   ruby
+   Copiar código
+   http://127.0.0.1:5500/pages/templates/index.html
+   Se preferir, você também pode usar outro servidor local, como o Python HTTP Server:
+
+bash
+Copiar código
+cd pages/templates/
+python -m http.server 5500
+Depois, acesse no navegador:
+
+arduino
+Copiar código
+http://127.0.0.1:5500/index.html
+⚠️ Importante: Apenas abrir o arquivo diretamente no navegador (duplo clique) pode causar erros, pois algumas funcionalidades dependem de requisições que precisam ser feitas através de um servidor local.
+
 ### **Dados Automáticos Inseridos**
 
 Durante a inicialização do projeto, os seguintes dados são inseridos automaticamente:
