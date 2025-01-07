@@ -299,7 +299,7 @@ D:\Adm Joias\Documents\Everton\Projeto_Final_IN\
 Este projeto utiliza autenticação com JWT (JSON Web Tokens). A chave secreta (`SECRET_KEY`) é usada para assinar os tokens e garantir a segurança. Por padrão, o projeto inclui uma chave padrão:
 
 ```python
-SECRET_KEY = "default-secret-key"
+SECRET_KEY = "sua-chave-secreta"
 ```
 
 **🚨 Recomendação:**
