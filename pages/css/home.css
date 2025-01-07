@@ -19,9 +19,12 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
-  width: 400px;
+  width: 800px; /* Aumentei para visualizar melhor */
+  max-height: 90vh;
+  overflow-y: auto; /* Adicionei para tornar rolável */
 }
 
+/* Título principal */
 .home-container h1 {
   font-size: 2.5em;
   margin-bottom: 20px;
@@ -32,6 +35,7 @@ body {
 #user-info {
   margin-bottom: 20px;
   text-align: left;
+  padding-left: 10px;
 }
 
 #user-info p {
@@ -43,6 +47,55 @@ body {
 #user-info span {
   font-weight: bold;
   color: #f5d142;
+}
+
+/* Contêiner do dashboard */
+.dashboard-container {
+  margin-top: 30px;
+}
+
+.dashboard-section {
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.dashboard-section h3 {
+  font-size: 1.6em;
+  color: #f5d142;
+  margin-bottom: 15px;
+}
+
+/* Cartões de dados */
+.data-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start; /* Alinha os cards a esquerda */
+}
+
+.data-card {
+  background: #555;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%; /* Garante que ocupe toda a largura do contêiner pai */
+  max-width: 180px; /* Define um tamanho máximo para os cartões */
+  text-align: center;
+}
+.data-card h4 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: #f5f5f5;
+}
+
+.data-card p {
+  font-size: 1.8em; /* Ajustei o tamanho da fonte */
+  font-weight: bold;
+  color: #f5d142;
+}
+.data-card .description {
+  font-size: 1em;
+  color: #f5f5f5;
 }
 
 /* Botões de navegação */

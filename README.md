@@ -1,8 +1,4 @@
-Segue a documentação atualizada com a informação de que o CEO é automaticamente inserido no banco de dados com as credenciais padrão para iniciar a configuração do sistema:
-
----
-
-# **Wayne Industries - Sistema de Segurança**
+## **Wayne Industries - Sistema de Segurança**
 
 Este é um sistema completo de gerenciamento de segurança, desenvolvido como projeto final. A aplicação é composta por um backend em **FastAPI**, um banco de dados **MySQL** e um frontend em **HTML/CSS**.
 
@@ -12,7 +8,7 @@ Este é um sistema completo de gerenciamento de segurança, desenvolvido como pr
 
 - Gerenciamento de Usuários (com autenticação e autorização).
 - Gerenciamento de Equipamentos, Veículos e Dispositivos de Segurança.
-- Diferentes níveis de acesso: Funcionário, Gerente, Administrador de Segurança e CEO.
+- Diferentes níveis de acesso: Funcionário (employee), Gerente (manager), Administrador de Segurança (security_admin) e CEO.
 - **Dados automáticos**: Equipamentos, veículos e dispositivos de segurança já cadastrados para simulação e uso imediato.
 
 ---
@@ -117,20 +113,52 @@ Se necessário, ajuste esse valor para o seu ambiente local.
 Depois de configurar o MySQL e o banco de dados, execute os seguintes comandos para criar as tabelas e iniciar o projeto:
 
 ```bash
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 ### **Dados Automáticos Inseridos**
 
 Durante a inicialização do projeto, os seguintes dados são inseridos automaticamente:
 
-- **CEO (Bruce Wayne):**
+CEO (Bruce Wayne):
 
-  - **Usuário:** `Bruce Wayne`
-  - **Senha:** `robin`
-  - **Papel (Role):** `ceo`
+Usuário: Bruce Wayne
 
-  > ⚠️ **Importante**: O CEO é o único usuário inicial e possui permissões para cadastrar outros usuários no sistema. Use as credenciais acima para acessar o sistema e configurar os demais usuários.
+Senha: robin
+
+Papel (Role): ceo
+
+⚠️ Importante: O sistema permite apenas um usuário com o papel de ceo, e esse usuário já foi criado automaticamente no sistema. Ele possui permissões exclusivas para gerenciar o cadastro de outros usuários e realizar ações administrativas. Não é possível criar outro usuário com o papel de ceo.
+
+Usuários adicionais para testes:
+
+Para melhorar a experiência de testes no sistema, foram pré-configurados os seguintes usuários:
+
+Alfred Pennyworth
+
+Usuário: Alfred Pennyworth  
+Senha: alfred123  
+Papel (Role): security_admin
+
+Lucius Fox
+
+Usuário: Lucius Fox  
+Senha: lucius123  
+Papel (Role): manager
+
+Clark Kent
+
+Usuário: Clark Kent  
+Senha: superman123  
+Papel (Role): employee
+
+Diana Prince
+
+Usuário: Diana Prince  
+Senha: wonderwoman123  
+Papel (Role): employee
+
+⚠️ Nota: Esses usuários foram criados automaticamente para facilitar o teste do sistema e validar as permissões e funcionalidades específicas de cada papel (security_admin, manager, employee). Sinta-se à vontade para utilizá-los durante os testes ou para criar novos usuários, caso necessário.
 
 - **Equipamentos**: Incluindo gadgets como Bat-Sinal, Bat-Garrafa e outros dispositivos tecnológicos.
 - **Veículos**: Como Batmóvel, Bat-Jato, entre outros.
@@ -138,44 +166,130 @@ Durante a inicialização do projeto, os seguintes dados são inseridos automati
 
 Esses dados são inseridos automaticamente para que você possa testar e utilizar o sistema de forma imediata.
 
+### **Gerenciamento de Recursos**
+
+A partir da página **home.html**, você pode navegar até **resources.html**, onde será possível gerenciar os equipamentos, veículos e dispositivos da Wayne Industries. Para acessar **resources.html**, é necessário que o usuário tenha as credenciais apropriadas, sendo validado por sua função (role).
+
+⚠️ **Cofre Wayne**  
+Dentro de **resources.html**, há uma área exclusiva chamada **Cofre Wayne**, que contém informações sensíveis e só pode ser acessada pelo **CEO**, Bruce Wayne. Portanto, para acessar o **Cofre Wayne**, o usuário deve possuir as permissões necessárias para a função de CEO, o que será validado através de suas credenciais no sistema.
+
+---
+
+## **Acessando a Documentação da API**
+
+Para verificar todas as rotas disponíveis na API, você pode acessar a documentação interativa gerada pelo FastAPI:
+
+- **Swagger UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- **Redoc**: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+
 ---
 
 ## **Estrutura do Projeto**
 
 ```plaintext
 D:\Adm Joias\Documents\Everton\Projeto_Final_IN\
-├── app\
-│   ├── __init__.py
-│   ├── main.py
-│   ├── database.py
-│   ├── models.py
-│   ├── schemas.py
-│   ├── utils\
-│   │   ├── __init__.py
-│   │   ├── auth.py
-│   │   ├── password.py
-│   ├── routers\
-│   │   ├── __init__.py
-│   │   ├── users.py
-│   │   ├── equipments.py
-│   │   ├── vehicles.py
-│   │   ├── devices.py
-│   ├── templates\
-│   │   ├── base.html
-│   │   ├── index.html
-│   │   ├── login.html
-│   │   ├── dashboard.html
-│   │   ├── equipments.html
-│   │   ├── vehicles.html
-│   │   ├── devices.html
-│   └── __pycache__\  # Gerado automaticamente pelo Python
-├── static\
-│   ├── css\
-│   │   ├── styles.css
-│   ├── js\
-│   │   ├── scripts.js
+├───app
+│   │   database.py
+│   │   initial_data.py
+│   │   main.py
+│   │   models.py
+│   │   schemas.py
+│   │   utils.py
+│   │   __init__.py
+│   │
+│   ├───assets
+│   │
+│   ├───crud
+│   │   │   crud_device.py
+│   │   │   crud_equipment.py
+│   │   │   crud_vehicle.py
+│   │   │   __init__.py
+│   │   │
+│   │   └───__pycache__
+│   │           crud_device.cpython-312.pyc
+│   │           crud_equipment.cpython-312.pyc
+│   │           crud_vehicle.cpython-312.pyc
+│   │           __init__.cpython-312.pyc
+│   │
+│   ├───routers
+│   │   │   devices.py
+│   │   │   equipments.py
+│   │   │   users.py
+│   │   │   vehicles.py
+│   │   │   __init__.py
+│   │   │
+│   │   └───__pycache__
+│   │           devices.cpython-312.pyc
+│   │           equipments.cpython-312.pyc
+│   │           users.cpython-312.pyc
+│   │           vehicles.cpython-312.pyc
+│   │           __init__.cpython-312.pyc
+│   │
+│   ├───utils
+│   │   │   auth.py
+│   │   │   password.py
+│   │   │   __init__.py
+│   │   │
+│   │   └───__pycache__
+│   │           auth.cpython-312.pyc
+│   │           password.cpython-312.pyc
+│   │           __init__.cpython-312.pyc
+│   │
+│   └───__pycache__
+│           crud.cpython-312.pyc
+│           database.cpython-312.pyc
+│           initial_data.cpython-312.pyc
+│           main.cpython-312.pyc
+│           models.cpython-312.pyc
+│           schemas.cpython-312.pyc
+│           utils.cpython-312.pyc
+│           __init__.cpython-312.pyc
+│
+├───pages
+│   ├───css
+│   │       admin.css
+│   │       ArchiveSecret.css
+│   │       devices.css
+│   │       equipments.css
+│   │       home.css
+│   │       login.css
+│   │       resources.css
+│   │       styles.css
+│   │       vehicles.css
+│   │       wayne-vault.css
+│   │
+│   ├───js
+│   │       dashboard-nav.js
+│   │       devices.js
+│   │       equipments.js
+│   │       home.js
+│   │       login.js
+│   │       register.js
+│   │       resources.js
+│   │       script.js
+│   │       vehicles.js
+│   │       wayne-vault.js
+│   │
+│   └───templates
+│           admin.html
+│           ArchiveScretVillans.html
+│           ArchiveSecretMetahumans.html
+│           base.html
+│           ceo_security_admin.html
+│           dashboard.html
+│           devices.html
+│           equipments.html
+│           home.html
+│           index.html
+│           login.html
+│           manager.html
+│           resources.html
+│           vehicles.html
+│           wayne-vault.html
+│
 ├── venv\  # Ambiente virtual (não listado em requisições de estrutura)
 ├── requirements.txt  # Dependências do projeto
+
 ```
 
 ---

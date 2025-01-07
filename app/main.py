@@ -1,10 +1,12 @@
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
-from app.database import Base, engine
+from app.database import Base, engine, SessionLocal
 from app.initial_data import initialize_database
 from app.routers import users, equipments, vehicles, devices
-from app.models import User
+from app.models import User, Equipment, Device, Vehicle
 from app.utils.auth import get_current_user, check_role
+from sqlalchemy.orm import Session
+from sqlalchemy.sql import func
 
 # Criar as tabelas no banco
 Base.metadata.create_all(bind=engine)
@@ -38,7 +40,42 @@ async def root():
 # Rotas protegidas
 @app.get("/dashboard-data")
 def get_dashboard_data(current_user=Depends(get_current_user)):
-    return {"message": "Bem-vindo ao Dashboard!", "username": current_user.username, "role": current_user.role}
+    # Garantir que o usuário esteja autenticado
+    db: Session = SessionLocal()
+
+    # Verificar papel do usuário (somente gerentes ou superiores podem acessar)
+    check_role(current_user, ["manager", "security_admin", "ceo"])
+
+    # Consultas ao banco de dados
+    total_users = db.query(User.role, func.count(User.id).label("total")).group_by(User.role).all()
+    total_users_formatted = [{"role": row.role, "total": row.total} for row in total_users]
+
+    total_equipments = db.query(Equipment).count()
+    total_devices = db.query(Device).count()
+    total_vehicles = db.query(Vehicle).count()
+
+    recent_users = db.query(User.id, User.username, User.role).order_by(User.id.desc()).limit(5).all()
+    recent_users_formatted = [{"id": row.id, "username": row.username, "role": row.role} for row in recent_users]
+
+    recent_equipments = db.query(Equipment.id, Equipment.name, Equipment.description).order_by(Equipment.id.desc()).limit(5).all()
+    recent_equipments_formatted = [{"id": row.id, "name": row.name, "description": row.description} for row in recent_equipments]
+
+    # Retornar os dados formatados
+    return {
+        "dashboard": {
+            "total_users": total_users_formatted,
+            "total_equipments": total_equipments,
+            "total_devices": total_devices,
+            "total_vehicles": total_vehicles,
+             "recent_users": recent_users_formatted,
+             "recent_equipments": recent_equipments_formatted
+        },
+        "current_user": {
+            "username": current_user.username,
+            "role": current_user.role
+        }
+    }
+
 
 @app.get("/admin-only")
 async def admin_page(current_user: User = Depends(get_current_user)):
