@@ -162,25 +162,25 @@ Usuários adicionais para testes:
 
 Para melhorar a experiência de testes no sistema, foram pré-configurados os seguintes usuários:
 
-Alfred Pennyworth
+**Alfred Pennyworth**
 
 Usuário: Alfred Pennyworth  
 Senha: alfred123  
 Papel (Role): security_admin
 
-Lucius Fox
+**Lucius Fox**
 
 Usuário: Lucius Fox  
 Senha: lucius123  
 Papel (Role): manager
 
-Clark Kent
+**Clark Kent**
 
 Usuário: Clark Kent  
 Senha: superman123  
 Papel (Role): employee
 
-Diana Prince
+**Diana Prince**
 
 Usuário: Diana Prince  
 Senha: wonderwoman123  
