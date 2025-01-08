@@ -19,6 +19,7 @@ Antes de começar, certifique-se de ter os seguintes programas instalados:
 
 - **Python 3.9+**
 - **MySQL**
+- **VSCode**
 - **Git**
 
 ---
