@@ -29,7 +29,7 @@ Antes de começar, certifique-se de ter os seguintes programas instalados:
 ### **1. Clone o repositório**
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/Evemarques07/Industrias-Wayne.git
 cd seu-repositorio
 ```
 
